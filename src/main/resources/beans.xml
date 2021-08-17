@@ -4,13 +4,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--  Создание класса-фабрики через конструктор  -->
-    <bean id="stationFactory" class="com.jetbulb.spring.overview.StationFactory"/>
+    <!--  Создание через конструктор  -->
+    <bean id="electricityStation" class="com.jetbulb.spring.overview.ElectricityStation"/>
 
-    <!--  Создание через класс-фабрику  -->
-    <bean id="electricityStation" factory-bean="stationFactory" factory-method="createElectricityStation"/>
+    <!--  Создание через конструктор  -->
+    <bean id="waterpumpStation" class="com.jetbulb.spring.overview.WaterpumpStation">
+        <constructor-arg type="int" index="2" value="4" />
+        <constructor-arg type="java.lang.String" value="District #13 Waterpump Station" />
+        <constructor-arg type="int" index="1" value="1000" />
+    </bean>
 
-    <!--  Создание через класс-фабрику  -->
-    <bean id="waterpumpStation" factory-bean="stationFactory" factory-method="createWaterpumpStation"/>
+    <!--  Создание компоненты (бина) и внедрение зависимостей при помощи конструктора и сеттера  -->
+    <bean id="districtSystem" class="com.jetbulb.spring.overview.DistrictSystem">
+        <property name="waterpumpStation" ref="waterpumpStation"/>
+        <constructor-arg ref="electricityStation"/>
+    </bean>
 
 </beans>

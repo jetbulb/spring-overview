@@ -2,14 +2,26 @@ package com.jetbulb.spring.overview;
 
 public class WaterpumpStation {
 
-    private static final WaterpumpStation INSTANCE = new WaterpumpStation();
+    private String name;
+    private int capacity;
+    private int pumpQuantity;
 
-    private WaterpumpStation() {
-        System.out.println("Waterpump Station created via static factory method! Good job!");
+    public WaterpumpStation(String name, int capacity, int pumpQuantity) {
+        this.name = name;
+        this.capacity = capacity;
+        this.pumpQuantity = pumpQuantity;
     }
 
-    public static WaterpumpStation getInstance() {
-        return INSTANCE;
+    public WaterpumpStation() {
+        System.out.println("Waterpump Station created! Good job!");
     }
 
+    @Override
+    public String toString() {
+        return "WaterpumpStation{" +
+                "name='" + name + '\'' +
+                ", capacity=" + capacity +
+                ", pumpQuantity=" + pumpQuantity +
+                '}';
+    }
 }
