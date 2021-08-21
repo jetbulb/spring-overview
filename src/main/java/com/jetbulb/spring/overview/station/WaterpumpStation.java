@@ -1,4 +1,4 @@
-package com.jetbulb.spring.overview;
+package com.jetbulb.spring.overview.station;
 
 public class WaterpumpStation {
 
@@ -10,10 +10,6 @@ public class WaterpumpStation {
         this.name = name;
         this.capacity = capacity;
         this.pumpQuantity = pumpQuantity;
-    }
-
-    public WaterpumpStation() {
-        System.out.println("Waterpump Station created! Good job!");
     }
 
     @Override
